@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="v2.css?v=4">
+  <link rel="stylesheet" href="v2.css?v=1">
 </head>
 <body>
   <header class="site-header" id="header">
@@ -83,4 +83,86 @@
 
     <section class="section" id="catalog">
       <div class="container">
-        <div class="section-head reveal"><div><div class="eyebrow">Каталог</div><h2>Популярные модели.</h2></div><p class="section-lead">Заказ можно собрать прямо на странице —
+        <div class="section-head reveal"><div><div class="eyebrow">Каталог</div><h2>Популярные модели.</h2></div><p class="section-lead">Заказ можно собрать прямо на странице — несколько товаров и любое количество. Полный ассортимент подключим из выгрузки после согласования v2.</p></div>
+        <div class="catalog-toolbar reveal"><div class="chips" id="filterChips"><button class="chip active" data-filter="all">Все</button><button class="chip" data-filter='1/2"'>1/2″</button><button class="chip" data-filter='3/4"'>3/4″</button><button class="chip" data-filter='1"'>1″</button></div><div class="catalog-note">Цены — из выгрузки каталога</div></div>
+        <div class="product-grid" id="productGrid"></div>
+      </div>
+    </section>
+
+    <div class="brands" aria-label="Бренды в ассортименте"><div class="brand-track" id="brandTrack"><span>GARWIN</span><span>JONNESWAY</span><span>JTC</span><span>LICOTA</span><span>OMBRA</span><span>THORVIK</span><span>СТАНКОИМПОРТ</span><span>MIGHTY SEVEN</span><span>GARWIN</span><span>JONNESWAY</span><span>JTC</span><span>LICOTA</span><span>OMBRA</span><span>THORVIK</span><span>СТАНКОИМПОРТ</span><span>MIGHTY SEVEN</span></div></div>
+
+    <section class="section" id="business">
+      <div class="container why-grid">
+        <div class="why-sticky reveal"><div class="eyebrow">Почему Респотек</div><h2>Не просто<br>витрина.</h2><p>Профессиональный инструмент — это не покупка по максимальной цифре на коробке. Важно, чтобы инструмент подходил под реальную работу и инфраструктуру.</p><a class="btn primary" href="#selector">Подобрать инструмент</a></div>
+        <div class="fact-list">
+          <article class="fact reveal"><div class="fact-no">01</div><div><h3>Опыт с 2001 года</h3><p>Работаем с инструментом и оборудованием для автосервисов, СТО и производственных предприятий.</p></div></article>
+          <article class="fact reveal"><div class="fact-no">02</div><div><h3>Подбор под нагрузку</h3><p>Смотрим на момент, квадрат, расход воздуха, режим эксплуатации и компрессор — а не только на цену.</p></div></article>
+          <article class="fact reveal"><div class="fact-no">03</div><div><h3>B2B и физлица</h3><p>Юрлица могут запросить счёт. Частные покупатели оформляют заказ так же быстро — менеджер подтвердит детали.</p></div></article>
+          <article class="fact reveal"><div class="fact-no">04</div><div><h3>Сервис после покупки</h3><p>Сервисный центр Респотек в Берёзовском выполняет ремонт и обслуживание инструмента.</p></div></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="delivery">
+      <div class="container service-grid">
+        <article class="service-card reveal"><div class="num">01</div><h3>Получение без лишней переписки.</h3><p>Выберите способ при оформлении заказа. Стоимость перевозки и курьера менеджер подтвердит после проверки состава заказа.</p><div class="delivery-pills"><span>Самовывоз</span><span>Курьер по Екатеринбургу</span><span>Транспортная компания</span></div></article>
+        <article class="service-card dark reveal" id="service"><div class="num">02</div><h3>Счёт, доставка и сервис — в одном заказе.</h3><p>Для организаций предусмотрены отдельные поля компании и ИНН. При необходимости отметьте «Нужен счёт» прямо в checkout.</p><ul><li>оплата по счёту для юрлиц</li><li>доставка по России</li><li>сервисный центр в Берёзовском</li></ul></article>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container faq">
+        <div class="section-head reveal"><div><div class="eyebrow">FAQ</div><h2>Коротко о выборе.</h2></div></div>
+        <div class="faq-item reveal"><button class="faq-q" type="button">Какой момент нужен для шиномонтажа?<i>+</i></button><div class="faq-a"><p>Зависит от типа транспорта и реальной нагрузки. Для легкового шиномонтажа важен не только максимальный момент, но и скорость, ресурс и масса инструмента. Подборщик помогает сузить выбор, а менеджер может проверить финальную модель.</p></div></div>
+        <div class="faq-item reveal"><button class="faq-q" type="button">Можно заказать несколько разных моделей?<i>+</i></button><div class="faq-a"><p>Да. Добавляйте разные товары в корзину, меняйте количество каждой позиции и оформляйте единый заказ.</p></div></div>
+        <div class="faq-item reveal"><button class="faq-q" type="button">Как считается доставка?<i>+</i></button><div class="faq-a"><p>Самовывоз — без стоимости доставки. Курьер по Екатеринбургу и транспортная компания пока подтверждаются менеджером после оформления. Следующий этап — подключение автоматического расчёта по весу и габаритам товаров.</p></div></div>
+        <div class="faq-item reveal"><button class="faq-q" type="button">Можно получить счёт на компанию?<i>+</i></button><div class="faq-a"><p>Да. В оформлении выберите «Компания», укажите название и ИНН, затем отметьте «Нужен счёт на оплату».</p></div></div>
+      </div>
+    </section>
+
+    <section class="final-cta">
+      <div class="container cta-box reveal"><div><h2>Не хотите разбираться<br>в характеристиках?</h2><p>Пройдите подборщик или соберите заказ самостоятельно. Если останутся вопросы — менеджер уточнит задачу, наличие и условия получения.</p></div><a class="btn" href="#selector">Подобрать за 40 секунд →</a></div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-grid">
+      <div><img class="footer-logo" src="https://respotec.ru/upload/CMax/6ab/kxvz2gpqhuf4oqn47p6lss56fytuywfl.png" alt="Респотек"><p class="footer-copy">Инструмент и оборудование для автосервисов, СТО и производственных задач. Екатеринбург · поставки по России.</p></div>
+      <div><h4>Навигация</h4><div class="footer-links"><a href="#catalog">Каталог</a><a href="#selector">Подборщик</a><a href="#delivery">Доставка</a><a href="#service">Сервис</a></div></div>
+      <div><h4>Связь</h4><div class="footer-links"><a href="tel:+73433638603">+7 (343) 363-86-03</a><a href="tel:+78004441601">8 800 444-16-01</a><a href="mailto:zakaz@respotec.ru">zakaz@respotec.ru</a><a href="https://respotec.ru/" target="_blank" rel="noopener">respotec.ru ↗</a></div></div>
+    </div>
+    <div class="container footer-bottom"><span>© 2026 Респотек</span><span>Екатеринбург, пр. Космонавтов, 62</span></div>
+  </footer>
+
+  <div class="overlay" id="overlay"></div>
+  <aside class="drawer" id="cartDrawer" aria-label="Корзина" aria-hidden="true">
+    <div class="drawer-head"><h3>Ваш заказ</h3><button class="icon-btn" id="closeCart" type="button" aria-label="Закрыть">×</button></div>
+    <div class="drawer-body" id="cartItems"></div>
+    <div class="drawer-foot"><div class="cart-total"><span>Товары</span><b id="cartTotal">0 ₽</b></div><button class="btn primary full" id="checkoutBtn" type="button">Оформить заказ →</button></div>
+  </aside>
+
+  <div class="modal" id="checkoutModal" aria-hidden="true">
+    <div class="modal-card">
+      <div class="modal-head"><h3>Оформление заказа</h3><button class="icon-btn modal-close" type="button">×</button></div>
+      <div class="modal-content checkout-grid">
+        <form id="checkoutForm">
+          <div class="form-section"><h4>Покупатель</h4><div class="seg"><button class="active" type="button" data-buyer="person">Физическое лицо</button><button type="button" data-buyer="company">Компания</button></div></div>
+          <div class="field-grid legal-fields" id="legalFields"><div class="field"><label>Компания</label><input class="input" name="company" autocomplete="organization"></div><div class="field"><label>ИНН</label><input class="input" name="inn" inputmode="numeric"></div></div>
+          <div class="form-section" style="margin-top:18px"><h4>Контакты</h4><div class="field-grid"><div class="field"><label>Имя</label><input class="input" name="name" required autocomplete="name"></div><div class="field"><label>Телефон</label><input class="input" name="phone" required autocomplete="tel"></div><div class="field"><label>Email</label><input class="input" type="email" name="email" required autocomplete="email"></div><div class="field"><label>Город</label><input class="input" name="city" required autocomplete="address-level2"></div></div></div>
+          <div class="form-section"><h4>Получение</h4><div class="field"><label>Способ</label><select class="select" name="delivery" id="deliverySelect"><option>Самовывоз</option><option>Курьер по Екатеринбургу</option><option>Транспортная компания</option></select></div><div class="field" id="addressField" style="display:none;margin-top:10px"><label>Адрес / комментарий по получению</label><input class="input" name="address"></div><label class="check" id="invoiceCheck" style="display:none"><input type="checkbox" name="invoice"> <span>Нужен счёт на оплату</span></label></div>
+          <div class="form-section"><div class="field"><label>Комментарий</label><textarea class="textarea" name="comment" placeholder="Например: удобное время для звонка"></textarea></div></div>
+          <label class="check"><input type="checkbox" required> <span>Согласен на обработку персональных данных для оформления заказа.</span></label>
+          <button class="btn primary full" type="submit" style="margin-top:18px">Оформить заказ</button>
+          <div class="status" id="checkoutStatus">В этой версии заказ формируется как письмо на a.tokarev@respotec.ru. Автоматическую серверную отправку подключим отдельным этапом.</div>
+        </form>
+        <aside class="order-summary"><h4 style="margin:0 0 16px">Состав заказа</h4><div class="summary-items" id="summaryItems"></div><div class="summary-total"><span>Итого</span><b id="summaryTotal">0 ₽</b></div><p class="delivery-note">Стоимость доставки не включена: курьер и транспортная компания пока рассчитываются менеджером после проверки заказа.</p></aside>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal" id="productModal" aria-hidden="true"><div class="modal-card"><div class="modal-head"><h3>Характеристики</h3><button class="icon-btn modal-close" type="button">×</button></div><div class="modal-content" id="productModalBody"></div></div></div>
+  <div class="toast" id="toast">Добавлено в корзину</div>
+
+  <script src="v2.js?v=1" defer></script>
+</body>
+</html>
