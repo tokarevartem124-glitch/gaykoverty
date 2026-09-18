@@ -1,1 +1,1 @@
-(async()=>{for(const src of ['v2-js-1.js','v2-js-2.js','v2-js-3.js','v2-js-4.js']){await new Promise((ok,fail)=>{const s=document.createElement('script');s.src=src+'?v=2';s.async=false;s.onload=ok;s.onerror=fail;document.head.appendChild(s)})}})();
+(async()=>{for(const src of ['v2-js-1.js','v2-js-2.js','v2-js-3.js','v2-js-4.js','v2-motion.js']){await new Promise((ok,fail)=>{const s=document.createElement('script');s.src=src+'?v=3';s.async=false;s.onload=ok;s.onerror=fail;document.head.appendChild(s)})}})();
