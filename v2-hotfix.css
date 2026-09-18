@@ -1,0 +1,2 @@
+/* v2.1 visibility fail-safe: content must never depend on JS */
+.reveal{opacity:1!important;transform:none!important}
