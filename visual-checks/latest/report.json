@@ -1,7 +1,7 @@
 {
   "url": "http://127.0.0.1:4173/index-v2.html?v=ci",
-  "generatedAt": "2026-09-21T06:00:19.026Z",
-  "gitSha": "bcce5591de3a590718b02e397a96882ff41cc184",
+  "generatedAt": "2026-09-21T06:11:27.327Z",
+  "gitSha": "9370e97b3af920cb13d660667423ab75780c4f79",
   "checks": [
     {
       "profile": "desktop",
@@ -47,7 +47,7 @@
       "profile": "desktop",
       "check": "catalog rendered products",
       "ok": true,
-      "value": 4
+      "value": 6
     },
     {
       "profile": "desktop",
@@ -113,7 +113,7 @@
       "profile": "mobile",
       "check": "catalog rendered products",
       "ok": true,
-      "value": 4
+      "value": 6
     },
     {
       "profile": "mobile",
