@@ -5,6 +5,7 @@
     await load('v2-js-2.js?v=5');
     await load('v2-js-3.js?v=5');
     await load('v2-js-4.js?v=5');
+    await load('v2-product-scene.js?v=26');
     await load('v2-visual.js?v=24');
     await load('v2-modern.js?v=24');
   }catch(err){
