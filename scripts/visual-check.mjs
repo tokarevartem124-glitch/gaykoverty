@@ -69,6 +69,29 @@ async function runProfile(name, viewport, isMobile = false) {
     value: await products.count()
   });
 
+  // Capture the real first screen before Playwright auto-scrolls to interactive controls.
+  await page.evaluate(() => window.scrollTo({ top: 0, behavior: 'instant' }));
+  await page.waitForTimeout(250);
+  await page.screenshot({ path: path.join(outDir, `${name}-hero.png`), fullPage: false });
+
+  // Warm all reveal animations and capture the page in its normal initial state.
+  const pageHeight = await page.evaluate(() => document.documentElement.scrollHeight);
+  for (let y = 0; y < pageHeight; y += Math.max(500, Math.floor(viewport.height * 0.8))) {
+    await page.evaluate(yPos => window.scrollTo({ top: yPos, behavior: 'instant' }), y);
+    await page.waitForTimeout(80);
+  }
+  await page.evaluate(() => window.scrollTo({ top: 0, behavior: 'instant' }));
+  await page.waitForTimeout(250);
+  await page.screenshot({ path: path.join(outDir, `${name}-full.png`), fullPage: true });
+
+  report.checks.push({
+    profile: name,
+    check: 'no horizontal overflow',
+    ok: await page.evaluate(() => document.documentElement.scrollWidth <= document.documentElement.clientWidth + 2),
+    value: await page.evaluate(() => ({ scrollWidth: document.documentElement.scrollWidth, clientWidth: document.documentElement.clientWidth }))
+  });
+
+  // Functional smoke tests happen after screenshots, so they cannot alter visual baselines.
   const cartButton = page.locator('#openCart');
   if (await cartButton.count()) {
     await cartButton.click();
@@ -91,24 +114,6 @@ async function runProfile(name, viewport, isMobile = false) {
       report.checks.push({ profile: name, check: 'selector advances', ok: false, value: 'next disabled' });
     }
   }
-
-  await page.screenshot({ path: path.join(outDir, `${name}-hero.png`), fullPage: false });
-
-  const pageHeight = await page.evaluate(() => document.documentElement.scrollHeight);
-  for (let y = 0; y < pageHeight; y += Math.max(500, Math.floor(viewport.height * 0.8))) {
-    await page.evaluate(yPos => window.scrollTo({ top: yPos, behavior: 'instant' }), y);
-    await page.waitForTimeout(80);
-  }
-  await page.evaluate(() => window.scrollTo({ top: 0, behavior: 'instant' }));
-  await page.waitForTimeout(250);
-  await page.screenshot({ path: path.join(outDir, `${name}-full.png`), fullPage: true });
-
-  report.checks.push({
-    profile: name,
-    check: 'no horizontal overflow',
-    ok: await page.evaluate(() => document.documentElement.scrollWidth <= document.documentElement.clientWidth + 2),
-    value: await page.evaluate(() => ({ scrollWidth: document.documentElement.scrollWidth, clientWidth: document.documentElement.clientWidth }))
-  });
 
   await context.close();
 }
