@@ -1,4 +1,4 @@
-/* Visual QA fixes — first-screen readability and mobile clipping */
+/* Visual QA fixes — first-screen readability, catalog rhythm and mobile polish */
 @media(min-width:901px){
   .hero{
     background:
@@ -14,6 +14,37 @@
   .hero-visual{margin-left:-6px}
 }
 
+/* More deliberate showroom grid: one featured model + three compact cards, all in one row */
+@media(min-width:1181px){
+  #catalog .product-grid{grid-template-columns:2fr repeat(3,1fr);align-items:stretch}
+  #catalog .product:nth-child(1){grid-column:auto;grid-row:auto}
+  #catalog .product:nth-child(1) .product-media{height:238px}
+  #catalog .product:not(:first-child) .product-media{height:190px}
+  #catalog .product{height:100%}
+}
+
+/* Make the catalogue feel less like a spreadsheet and more like a showroom */
+#catalog .product{isolation:isolate}
+#catalog .product:before{content:"";position:absolute;left:0;top:0;width:0;height:2px;background:linear-gradient(90deg,#ff6b35,#4e9aff,#8fdcff);transition:width .45s cubic-bezier(.16,1,.3,1);z-index:4}
+#catalog .product:hover:before{width:100%}
+#catalog .product-media{position:relative}
+#catalog .product-media:after{content:"";position:absolute;inset:auto 9% 5% 9%;height:16%;background:radial-gradient(ellipse,rgba(26,64,112,.18),transparent 70%);filter:blur(12px);pointer-events:none}
+#catalog .product-media img{position:relative;z-index:1}
+#catalog .availability{font-size:9px;font-weight:800;letter-spacing:.04em;text-transform:uppercase;margin-top:9px}
+#catalog .product h3{margin-top:5px}
+
+/* Section transitions: controlled tech detail instead of decorative noise */
+#catalog:after,#business:after{content:"";position:absolute;left:50%;top:0;width:min(1180px,calc(100% - 48px));height:1px;transform:translateX(-50%);background:linear-gradient(90deg,transparent,rgba(35,92,170,.12),transparent)}
+#business .fact-no{font-variant-numeric:tabular-nums}
+
+@media(min-width:721px) and (max-width:1180px){
+  #catalog .product-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  #catalog .product:nth-child(1),#catalog .product:nth-child(4){grid-column:1/-1}
+  #catalog .product:nth-child(4){display:grid;grid-template-columns:minmax(220px,.8fr) 1.2fr;grid-template-rows:auto auto auto auto auto auto;column-gap:20px;align-items:start}
+  #catalog .product:nth-child(4) .product-media{grid-column:1;grid-row:1/7;height:230px}
+  #catalog .product:nth-child(4) .availability,#catalog .product:nth-child(4) .product-brand,#catalog .product:nth-child(4) h3,#catalog .product:nth-child(4) .spec-row,#catalog .product:nth-child(4) .price-row,#catalog .product:nth-child(4) .product-actions{grid-column:2}
+}
+
 @media(max-width:720px){
   .hero-copy{min-width:0;overflow:visible}
   .hero-kicker{width:100%;max-width:100%;font-size:8px;line-height:1.3;letter-spacing:.055em;white-space:normal;padding:8px 10px;box-sizing:border-box}
@@ -21,4 +52,34 @@
   .hero h1{font-size:clamp(39px,10.6vw,46px);line-height:.91;letter-spacing:-.062em;max-width:100%;overflow-wrap:normal;word-break:normal}
   .hero-sub{font-size:14px;line-height:1.55;max-width:100%}
   .hero-proof{font-size:9px;gap:7px 11px}
+
+  /* Stronger mobile information hierarchy */
+  #catalog .section-head{display:block}
+  #catalog .section-lead{margin-top:15px;font-size:12px;line-height:1.55}
+  #catalog .catalog-toolbar{display:block;overflow:hidden}
+  #catalog .chips{display:flex;overflow-x:auto;scrollbar-width:none;padding-bottom:2px}
+  #catalog .chips::-webkit-scrollbar{display:none}
+  #catalog .catalog-note{display:none}
+  #catalog .product-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}
+  #catalog .product:nth-child(1),#catalog .product:nth-child(4){grid-column:1/-1}
+  #catalog .product:nth-child(1){display:grid;grid-template-columns:43% 1fr;grid-template-rows:auto auto auto auto auto auto;column-gap:12px;align-items:start;padding:10px}
+  #catalog .product:nth-child(1) .product-media{grid-column:1;grid-row:1/7;height:190px;margin:0}
+  #catalog .product:nth-child(1) .availability,#catalog .product:nth-child(1) .product-brand,#catalog .product:nth-child(1) h3,#catalog .product:nth-child(1) .spec-row,#catalog .product:nth-child(1) .price-row,#catalog .product:nth-child(1) .product-actions{grid-column:2}
+  #catalog .product:nth-child(1) h3{font-size:14px;min-height:0}
+  #catalog .product:nth-child(1) .price{font-size:21px}
+  #catalog .product:nth-child(1) .product-actions{grid-template-columns:1fr 36px;display:grid}
+  #catalog .product:nth-child(4){display:grid;grid-template-columns:39% 1fr;grid-template-rows:auto auto auto auto auto auto;column-gap:12px;align-items:start;padding:10px}
+  #catalog .product:nth-child(4) .product-media{grid-column:1;grid-row:1/7;height:178px;margin:0}
+  #catalog .product:nth-child(4) .availability,#catalog .product:nth-child(4) .product-brand,#catalog .product:nth-child(4) h3,#catalog .product:nth-child(4) .spec-row,#catalog .product:nth-child(4) .price-row,#catalog .product:nth-child(4) .product-actions{grid-column:2}
+  #catalog .product:nth-child(4) h3{font-size:13px;min-height:0}
+  #catalog .product:nth-child(4) .price{font-size:20px}
+  #catalog .product:nth-child(4) .product-actions{grid-template-columns:1fr 36px;display:grid}
+  #catalog .product:nth-child(2) h3,#catalog .product:nth-child(3) h3{font-size:12px;line-height:1.18;min-height:44px}
+  #catalog .product:nth-child(2) .product-media,#catalog .product:nth-child(3) .product-media{height:135px}
+  #catalog .product:nth-child(2) .spec:nth-child(3),#catalog .product:nth-child(3) .spec:nth-child(3){display:none}
+  #catalog .product:nth-child(2) .product-actions,#catalog .product:nth-child(3) .product-actions{grid-template-columns:1fr 34px}
+
+  /* Keep long final CTA readable on narrow phones */
+  .cta-box h2{font-size:clamp(38px,11.2vw,46px);line-height:.92;letter-spacing:-.058em}
+  .cta-box p{font-size:12px;line-height:1.55}
 }
