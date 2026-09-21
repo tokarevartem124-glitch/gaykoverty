@@ -1,7 +1,7 @@
 {
   "url": "http://127.0.0.1:4173/index-v2.html?v=ci",
-  "generatedAt": "2026-09-21T05:47:54.613Z",
-  "gitSha": "4af4554ad0a4e66b53b3e55a5199114412832055",
+  "generatedAt": "2026-09-21T05:50:22.793Z",
+  "gitSha": "2b6751f787a9f35bfa4e73fe7fd7360d051f0491",
   "checks": [
     {
       "profile": "desktop",
@@ -51,6 +51,15 @@
     },
     {
       "profile": "desktop",
+      "check": "no horizontal overflow",
+      "ok": true,
+      "value": {
+        "scrollWidth": 1440,
+        "clientWidth": 1440
+      }
+    },
+    {
+      "profile": "desktop",
       "check": "cart opens",
       "ok": true
     },
@@ -59,15 +68,6 @@
       "check": "selector advances",
       "ok": true,
       "value": "02"
-    },
-    {
-      "profile": "desktop",
-      "check": "no horizontal overflow",
-      "ok": true,
-      "value": {
-        "scrollWidth": 1440,
-        "clientWidth": 1440
-      }
     },
     {
       "profile": "mobile",
@@ -117,6 +117,15 @@
     },
     {
       "profile": "mobile",
+      "check": "no horizontal overflow",
+      "ok": true,
+      "value": {
+        "scrollWidth": 390,
+        "clientWidth": 390
+      }
+    },
+    {
+      "profile": "mobile",
       "check": "cart opens",
       "ok": true
     },
@@ -125,15 +134,6 @@
       "check": "selector advances",
       "ok": true,
       "value": "02"
-    },
-    {
-      "profile": "mobile",
-      "check": "no horizontal overflow",
-      "ok": true,
-      "value": {
-        "scrollWidth": 390,
-        "clientWidth": 390
-      }
     }
   ],
   "consoleErrors": [],
