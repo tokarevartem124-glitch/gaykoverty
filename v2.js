@@ -5,9 +5,10 @@
     await load('v2-js-2.js?v=5');
     await load('v2-js-3.js?v=5');
     await load('v2-js-4.js?v=5');
-    await load('v2-visual.js?v=22');
+    await load('v2-visual.js?v=24');
+    await load('v2-modern.js?v=24');
   }catch(err){
-    document.documentElement.classList.remove('motion-ok','v2-motion');
+    document.documentElement.classList.remove('motion-ok','v2-motion','v2-ready');
     console.error('v2 loader error',err);
   }
 })();
