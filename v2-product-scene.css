@@ -1,0 +1,70 @@
+/* v2.6 — product scene + blue-only brand palette */
+:root{
+  --m-warm:#69b8ff;
+  --m-blue:#2d7dff;
+  --m-blue2:#8ed7ff;
+}
+
+/* Remove the accidental warm/orange secondary accent. */
+.eyebrow:before,
+.selector-wrap:before,
+.cta-box:before,
+.service-card.dark:after,
+.metric:after,
+#v2ScrollProgress{
+  background:linear-gradient(90deg,#2d7dff,#73bdff,#b5e7ff)!important;
+  box-shadow:0 0 22px rgba(64,151,255,.32)!important;
+}
+.hero-kicker i,.hero-proof span:before,.cart-count{background:#65b7ff!important}
+.hero-kicker i{box-shadow:0 0 18px rgba(76,157,255,.58)!important}
+.hero-proof span:before{box-shadow:0 0 0 4px rgba(76,157,255,.08),0 0 15px rgba(76,157,255,.25)!important}
+.selector-wrap{background:radial-gradient(circle at calc(82% + var(--selector-x,0px)) calc(18% + var(--selector-y,0px)),rgba(49,131,255,.25),transparent 25%),radial-gradient(circle at 12% 110%,rgba(76,167,255,.08),transparent 25%),linear-gradient(145deg,#10243b,#071422 60%,#040a11)!important}
+.cta-box{background:radial-gradient(circle at 84% 18%,rgba(52,132,255,.40),transparent 27%),radial-gradient(circle at 15% 115%,rgba(92,184,255,.11),transparent 28%),linear-gradient(135deg,#091728,#102a48 62%,#071421)!important}
+
+/* Hero product stage: image reads as an object rather than a JPEG card. */
+.hero-visual{isolation:isolate}
+.hero-visual:before{
+  background:
+    radial-gradient(circle at 58% 43%,rgba(255,255,255,.98),rgba(227,239,252,.92) 48%,rgba(202,221,242,.68) 100%)!important;
+  border-color:rgba(255,255,255,.96)!important;
+}
+.hero-visual:after{left:8%!important;right:1%!important;bottom:1%!important;height:22%!important;background:radial-gradient(ellipse,rgba(6,24,52,.33),transparent 68%)!important;filter:blur(22px)!important}
+.hero-product{
+  width:min(485px,86%)!important;
+  max-height:500px;
+  object-fit:contain;
+  mix-blend-mode:multiply!important;
+  filter:contrast(1.08) saturate(1.08) drop-shadow(0 35px 30px rgba(10,34,70,.25))!important;
+}
+.hero-orbit{border-color:rgba(47,124,255,.24)!important}
+.hero-orbit:before,.hero-orbit:after{border-color:rgba(47,124,255,.12)!important}
+.tech-label{background:rgba(246,251,255,.78)!important;border-color:rgba(255,255,255,.95)!important}
+.hero-note{font-weight:800;letter-spacing:.12em;color:#456787!important}
+
+/* A subtle product-floor light makes all catalog imagery feel cut out from the scene. */
+.product-media{position:relative;isolation:isolate;background:radial-gradient(circle at 50% 38%,#fff 0%,#f4f8fd 52%,#e7eef7 100%)!important}
+.product-media:before{content:"";position:absolute;left:15%;right:15%;bottom:8%;height:13%;z-index:0;border-radius:50%;background:radial-gradient(ellipse,rgba(13,42,80,.18),transparent 68%);filter:blur(10px)}
+.product-media:after{content:"";position:absolute;inset:10% 8% auto auto;width:42%;height:42%;z-index:0;border-radius:50%;background:radial-gradient(circle,rgba(61,143,255,.15),transparent 70%);filter:blur(8px)}
+.product-media img{position:relative;z-index:1;mix-blend-mode:multiply!important;filter:contrast(1.045) saturate(1.05) drop-shadow(0 18px 16px rgba(10,35,70,.13));transform:translateZ(0)}
+.product:hover .product-media img{transform:translateY(-5px) scale(1.055)!important}
+.product .badge{z-index:3;backdrop-filter:blur(12px);background:rgba(255,255,255,.76)}
+
+/* Six items form a deliberate showroom grid rather than a sparse list. */
+@media(min-width:1181px){
+  .product-grid{grid-template-columns:repeat(4,minmax(0,1fr))!important;grid-auto-flow:dense}
+  .product:nth-child(1){grid-column:span 2!important}
+  .product:nth-child(2),.product:nth-child(3){grid-column:span 1!important}
+  .product:nth-child(4),.product:nth-child(5),.product:nth-child(6){grid-column:span 1!important}
+  .product:nth-child(5){background:radial-gradient(circle at 80% 12%,rgba(45,125,255,.11),transparent 24%),linear-gradient(150deg,#fff,#f4f8ff)}
+}
+
+@media(max-width:720px){
+  .hero-product{width:min(315px,84%)!important;max-height:315px}
+  .product-grid{grid-template-columns:1fr!important;gap:11px!important}
+  .product,.product:nth-child(1){grid-column:auto!important;display:grid;grid-template-columns:132px minmax(0,1fr);grid-template-rows:auto auto auto auto;column-gap:13px;align-items:start}
+  .product-media,.product:nth-child(1) .product-media{grid-row:1 / span 4;height:154px!important;margin:0}
+  .product .availability,.product .product-brand,.product h3,.product .spec-row,.product .price-row,.product .product-actions{grid-column:2}
+  .product h3{min-height:0;margin-top:3px;font-size:14px}
+  .product .spec-row{display:flex!important;flex-wrap:wrap}
+  .product .price-row{margin-top:6px}.product .product-actions{display:flex!important;margin-top:8px}
+}
