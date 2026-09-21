@@ -1,0 +1,151 @@
+{
+  "url": "http://127.0.0.1:4173/index-v2.html?v=ci",
+  "generatedAt": "2026-09-21T05:47:54.613Z",
+  "gitSha": "4af4554ad0a4e66b53b3e55a5199114412832055",
+  "checks": [
+    {
+      "profile": "desktop",
+      "check": "exists:header",
+      "ok": true
+    },
+    {
+      "profile": "desktop",
+      "check": "exists:hero",
+      "ok": true
+    },
+    {
+      "profile": "desktop",
+      "check": "exists:selector",
+      "ok": true
+    },
+    {
+      "profile": "desktop",
+      "check": "exists:catalog",
+      "ok": true
+    },
+    {
+      "profile": "desktop",
+      "check": "exists:product grid",
+      "ok": true
+    },
+    {
+      "profile": "desktop",
+      "check": "exists:cart button",
+      "ok": true
+    },
+    {
+      "profile": "desktop",
+      "check": "exists:final CTA",
+      "ok": true
+    },
+    {
+      "profile": "desktop",
+      "check": "hero heading visible",
+      "ok": true
+    },
+    {
+      "profile": "desktop",
+      "check": "catalog rendered products",
+      "ok": true,
+      "value": 4
+    },
+    {
+      "profile": "desktop",
+      "check": "cart opens",
+      "ok": true
+    },
+    {
+      "profile": "desktop",
+      "check": "selector advances",
+      "ok": true,
+      "value": "02"
+    },
+    {
+      "profile": "desktop",
+      "check": "no horizontal overflow",
+      "ok": true,
+      "value": {
+        "scrollWidth": 1440,
+        "clientWidth": 1440
+      }
+    },
+    {
+      "profile": "mobile",
+      "check": "exists:header",
+      "ok": true
+    },
+    {
+      "profile": "mobile",
+      "check": "exists:hero",
+      "ok": true
+    },
+    {
+      "profile": "mobile",
+      "check": "exists:selector",
+      "ok": true
+    },
+    {
+      "profile": "mobile",
+      "check": "exists:catalog",
+      "ok": true
+    },
+    {
+      "profile": "mobile",
+      "check": "exists:product grid",
+      "ok": true
+    },
+    {
+      "profile": "mobile",
+      "check": "exists:cart button",
+      "ok": true
+    },
+    {
+      "profile": "mobile",
+      "check": "exists:final CTA",
+      "ok": true
+    },
+    {
+      "profile": "mobile",
+      "check": "hero heading visible",
+      "ok": true
+    },
+    {
+      "profile": "mobile",
+      "check": "catalog rendered products",
+      "ok": true,
+      "value": 4
+    },
+    {
+      "profile": "mobile",
+      "check": "cart opens",
+      "ok": true
+    },
+    {
+      "profile": "mobile",
+      "check": "selector advances",
+      "ok": true,
+      "value": "02"
+    },
+    {
+      "profile": "mobile",
+      "check": "no horizontal overflow",
+      "ok": true,
+      "value": {
+        "scrollWidth": 390,
+        "clientWidth": 390
+      }
+    }
+  ],
+  "consoleErrors": [],
+  "pageErrors": [],
+  "failedRequests": [],
+  "summary": {
+    "totalChecks": 24,
+    "failedChecks": 0,
+    "consoleErrors": 0,
+    "pageErrors": 0,
+    "relevantFailedRequests": 0,
+    "passed": true
+  },
+  "relevantFailedRequests": []
+}
