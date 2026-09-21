@@ -1,0 +1,79 @@
+name: Visual QA
+
+on:
+  push:
+    branches: [main]
+    paths-ignore:
+      - 'visual-checks/**'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  visual-qa:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Install Playwright
+        run: |
+          npm install --no-save playwright@1.55.0
+          npx playwright install --with-deps chromium
+
+      - name: Start local site
+        run: |
+          python3 -m http.server 4173 --bind 127.0.0.1 > /tmp/respotec-http.log 2>&1 &
+          echo $! > /tmp/respotec-http.pid
+          for i in {1..30}; do
+            if curl -fsS http://127.0.0.1:4173/index-v2.html >/dev/null; then
+              exit 0
+            fi
+            sleep 1
+          done
+          cat /tmp/respotec-http.log
+          exit 1
+
+      - name: Run browser visual QA
+        id: visualqa
+        continue-on-error: true
+        env:
+          VISUAL_BASE_URL: http://127.0.0.1:4173/index-v2.html?v=ci
+        run: node scripts/visual-check.mjs
+
+      - name: Upload screenshots artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: visual-qa-${{ github.sha }}
+          path: visual-checks/latest
+          if-no-files-found: error
+          retention-days: 30
+
+      - name: Publish latest screenshots to repository
+        if: always()
+        run: |
+          if [ ! -d visual-checks/latest ]; then
+            echo 'No screenshots generated'
+            exit 1
+          fi
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -f visual-checks/latest
+          if git diff --cached --quiet; then
+            echo 'No visual output changes'
+            exit 0
+          fi
+          git commit -m "Visual QA: update latest screenshots [skip ci]"
+          git push
+
+      - name: Fail workflow when QA failed
+        if: steps.visualqa.outcome == 'failure'
+        run: exit 1
